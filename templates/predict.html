@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algerian Forest Fire | Predict</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="logo.png" alt="Logo" style="width: 40px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://www.linkedin.com/in/mukul-jain-412147220/">Contact Us</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Main Container -->
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Algerian Forest Fire Prediction</h1>
+    <form id="firePredictionForm" action="{{ url_for('predict_datapoint') }}" method="post">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="temperature">Temperature (°C)</label>
+                <input type="number" step="0.01" class="form-control" id="temperature" name="temperature" required>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="rh">Relative Humidity (%)</label>
+                <input type="number" step="0.01" class="form-control" id="rh" name="rh" required>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="ws">Wind Speed (km/h)</label>
+                <input type="number" step="0.01" class="form-control" id="ws" name="ws" required>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="rain">Rain (mm)</label>
+                <input type="number" step="0.01" class="form-control" id="rain" name="rain" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="ffmc">FFMC</label>
+                <input type="number" step="0.01" class="form-control" id="ffmc" name="ffmc" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="dmc">DMC</label>
+                <input type="number" step="0.01" class="form-control" id="dmc" name="dmc" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="isi">ISI</label>
+                <input type="number" step="0.01" class="form-control" id="isi" name="isi" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="classes">Classes</label>
+                <input type="text" class="form-control" id="classes" name="classes" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="region">Region</label>
+                <input type="text" class="form-control" id="region" name="region" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Predict</button>
+    </form>
+    {% if results %}
+    <div id="result" class="mt-4">
+        <h2 class="text-center">The FWI prediction is {{ results }}</h2>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Bootstrap JavaScript and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
