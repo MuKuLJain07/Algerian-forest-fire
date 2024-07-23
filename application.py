@@ -5,8 +5,8 @@ from sklearn.preprocessing import StandardScaler
 from flask import Flask, request, jsonify, render_template
 
 
-app = Flask(__name__)
-
+application = Flask(__name__)
+app = application
 
 # import our models
 ridge_model = pickle.load(open('models/ridge.pkl', 'rb'))
